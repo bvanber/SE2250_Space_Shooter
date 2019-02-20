@@ -22,11 +22,6 @@ public class Hero : MonoBehaviour {
             Debug.LogError("Hero.Awake() - Attempted to assign second Hero.s!");
         }
     }
-
-	// Use this for initialization
-	void Start () {
-		
-	}
 	
 	// Update is called once per frame
 	void Update () {

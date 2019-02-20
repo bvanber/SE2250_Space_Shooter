@@ -8,8 +8,6 @@ public class Enemy_1 : Enemy
     private static Random _rand = new Random();
     private int _randomNum = _rand.Next(0, 2);
    
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -20,8 +18,7 @@ public class Enemy_1 : Enemy
         else
         {
             gameObject.transform.Rotate(0, 0, 45);
-        }
-        
+        }        
         
     }
     override public void Move()

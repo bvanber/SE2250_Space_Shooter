@@ -11,12 +11,9 @@ public class Enemy_2 :  Enemy
 
         tempPos.y -= speed * Time.deltaTime;
 
+        tempPos.x -= speed * Time.deltaTime*Random.Range(0.5f,1f);
+     
         pos = tempPos;
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
     }
 
     // Update is called once per frame
