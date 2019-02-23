@@ -152,9 +152,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabEnemies:
-  - {fileID: 1655127428708872, guid: 68ea4b7937e3f5049975ecf880e35498, type: 3}
+  - {fileID: 1655127428708872, guid: cb9d056118a1b4845810fddd1e376b9a, type: 3}
   - {fileID: 1763081411557376, guid: b5e3ee4d0d50a1841a8a95b516f5f3cf, type: 3}
-  - {fileID: 1179878267519088, guid: cb9d056118a1b4845810fddd1e376b9a, type: 3}
+  - {fileID: 1179878267519088, guid: 68ea4b7937e3f5049975ecf880e35498, type: 3}
   _enemies: []
 --- !u!20 &519420031
 Camera:

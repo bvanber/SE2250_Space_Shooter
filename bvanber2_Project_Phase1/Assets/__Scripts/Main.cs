@@ -41,14 +41,14 @@ public class Main : MonoBehaviour
             if (dooDad.transform.position.x<-60|| dooDad.transform.position.x > 60|| dooDad.transform.position.y < -60|| dooDad.transform.position.x > 80)
             {
                 _toDelete.Add(dooDad);
-                _enemies.Remove(dooDad);
             }
         }
         //delete the out of view enemies
-        foreach(GameObject bye in _toDelete)
+        foreach (GameObject bye in _toDelete)
         {
-            _toDelete.Remove(bye);
+            _enemies.Remove(bye);
             Destroy(bye);
         }
+        _toDelete.Clear();
     }
 }
