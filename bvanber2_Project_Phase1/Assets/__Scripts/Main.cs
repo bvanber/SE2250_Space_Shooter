@@ -27,18 +27,18 @@ public class Main : MonoBehaviour
             //get a random number out of 3 for the enemy
             int num = rand.Next()%3;
             //if enemy 0 or 1 start above the view with a random x value otherwise start with a random y value if enemy 2
-            if (num == 0 || num == 1) { _startPos = new Vector3(Random.Range(-45, 45), 60, 0); }
-            else { _startPos = new Vector3(50, Random.Range(-20, 60), 0); }
+            if (num == 0 || num == 1) { _startPos = new Vector3(Random.Range(-25, 25), 45, 0); }
+            else { _startPos = new Vector3(40, Random.Range(-20, 55), 0); }
 
             GameObject enn= Instantiate(prefabEnemies[(num) % 3],_startPos, Quaternion.identity);
             _enemies.Add(enn);
-            _timer = 2.5f;//reset the timer
+            _timer = 2f;//reset the timer
         }
 
         foreach(GameObject dooDad in _enemies)
         {
             //check if the enemies are out of view
-            if (dooDad.transform.position.x<-60|| dooDad.transform.position.x > 60|| dooDad.transform.position.y < -60|| dooDad.transform.position.x > 80)
+            if (dooDad.transform.position.x<-35|| dooDad.transform.position.x > 41|| dooDad.transform.position.y < -50|| dooDad.transform.position.x > 70)
             {
                 _toDelete.Add(dooDad);
             }
