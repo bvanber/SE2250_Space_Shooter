@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 33167718056536014}
   - component: {fileID: 23574207412946036}
   - component: {fileID: 65465981759901650}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1122902003366474}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 33972183945818130}
   - component: {fileID: 23599274431697004}
   - component: {fileID: 65115346382775284}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1221265588455604}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -194,7 +194,7 @@ GameObject:
   - component: {fileID: 33427909188746932}
   - component: {fileID: 23713196840000810}
   - component: {fileID: 136676421915711214}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -268,7 +268,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1375073532673596}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
@@ -285,9 +285,10 @@ GameObject:
   - component: {fileID: 4942013011913642}
   - component: {fileID: 54037020919083466}
   - component: {fileID: 6799998766137792867}
-  m_Layer: 0
-  m_Name: Enemy_2
-  m_TagString: Untagged
+  - component: {fileID: 7166172241076713613}
+  m_Layer: 9
+  m_Name: Enemy_0
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -341,3 +342,24 @@ MonoBehaviour:
   fireRate: 0.3
   health: 10
   score: 100
+--- !u!114 &7166172241076713613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655127428708872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dd5fa917bd9245c2a163e00a8aea681, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: -2.5
+  keepOnScreen: 1
+  isOnScreen: 1
+  camWidth: 0
+  camHeight: 0
+  offRight: 0
+  offLeft: 0
+  offUp: 0
+  offDown: 0

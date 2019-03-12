@@ -9,6 +9,13 @@ public class Enemy : MonoBehaviour      //Superclass from which the other 2 Enem
     public float fireRate = 0.3f;
     public float health = 10;               //Defining variables
     public int score = 100;
+    protected BoundsCheck bndCheck;
+
+    private void Awake()
+    {
+        bndCheck = GetComponent<BoundsCheck>(); //Bounds Check 
+    }
+
     public Vector3 pos
     {
         get
@@ -20,6 +27,7 @@ public class Enemy : MonoBehaviour      //Superclass from which the other 2 Enem
             this.transform.position = value;
         }
     }
+
     public virtual void Move()
     {
         Vector3 _tempPos = pos;
@@ -29,10 +37,19 @@ public class Enemy : MonoBehaviour      //Superclass from which the other 2 Enem
        
         pos = _tempPos;
     }
-    
+
     // Update is called once per frame
     void Update()
     {
         Move();
+
+        if (bndCheck != null && bndCheck.offDown)
+        {
+            //check to make sure it's gone off the bottom of the screen
+            if (pos.y < bndCheck.camHeight - bndCheck.radius)
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 }

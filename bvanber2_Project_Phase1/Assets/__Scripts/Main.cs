@@ -1,15 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Main : MonoBehaviour
-{ 
+{
+    static public Main scene;
+
     public GameObject[] prefabEnemies = new GameObject[3];
     private float _timer;
     private Vector3 _startPos;
     private List<GameObject> _enemies = new List<GameObject>();
     private List<GameObject> _toDelete = new List<GameObject>();
-   
+
+    void Awake()
+    {
+        if (scene == null) //checks if scene is null
+        {
+            scene = this;
+        }
+        else
+        {
+            Debug.LogError("Main.Awake()!");
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,14 +50,17 @@ public class Main : MonoBehaviour
             _timer = 2f;//reset the timer
         }
 
+
         foreach(GameObject dooDad in _enemies)
         {
             //check if the enemies are out of view
-            if (dooDad.transform.position.x<-35|| dooDad.transform.position.x > 41|| dooDad.transform.position.y < -50|| dooDad.transform.position.x > 70)
+            if (dooDad == null || dooDad.transform.position.x<-35|| dooDad.transform.position.x > 41|| dooDad.transform.position.y < -50|| dooDad.transform.position.x > 70)
             {
                 _toDelete.Add(dooDad);
             }
         }
+
+
         //delete the out of view enemies
         foreach (GameObject bye in _toDelete)
         {
@@ -50,5 +68,17 @@ public class Main : MonoBehaviour
             Destroy(bye);
         }
         _toDelete.Clear();
+    }
+
+    public void DelayedRestart(float delay)
+    {
+        //invoked the Restart() method in delay seconds
+        Invoke("Restart", delay);
+    }
+
+    public void Restart()
+    {
+        //reload scene to restart the game
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

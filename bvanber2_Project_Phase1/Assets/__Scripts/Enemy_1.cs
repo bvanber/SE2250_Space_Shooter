@@ -38,7 +38,6 @@ public class Enemy_1 : Enemy
             pos = _tempPos;
 
         }
-
     }
 
     // Update is called once per frame

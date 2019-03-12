@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 33780693980231374}
   - component: {fileID: 23969606495440514}
   - component: {fileID: 135291962238651694}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1063108506097866}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -102,9 +102,10 @@ GameObject:
   - component: {fileID: 4093991080905754}
   - component: {fileID: 54997926916443198}
   - component: {fileID: 7048212674007096998}
-  m_Layer: 0
-  m_Name: Enemy_0
-  m_TagString: Untagged
+  - component: {fileID: 165894683184825516}
+  m_Layer: 9
+  m_Name: Enemy_2
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -158,6 +159,27 @@ MonoBehaviour:
   fireRate: 0.3
   health: 10
   score: 100
+--- !u!114 &165894683184825516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1179878267519088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dd5fa917bd9245c2a163e00a8aea681, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: -2.5
+  keepOnScreen: 1
+  isOnScreen: 1
+  camWidth: 0
+  camHeight: 0
+  offRight: 0
+  offLeft: 0
+  offUp: 0
+  offDown: 0
 --- !u!1 &1393515089052988
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,7 +192,7 @@ GameObject:
   - component: {fileID: 33038911428803358}
   - component: {fileID: 23875520007341336}
   - component: {fileID: 136581820007403698}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Wing1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -244,7 +266,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1393515089052988}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
@@ -262,7 +284,7 @@ GameObject:
   - component: {fileID: 33539203106806032}
   - component: {fileID: 23289283020532662}
   - component: {fileID: 136822495847139936}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Wing2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -336,7 +358,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1442599631566404}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
