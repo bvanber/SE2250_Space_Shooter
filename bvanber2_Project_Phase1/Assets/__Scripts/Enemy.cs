@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour      //Superclass from which the other 2 Enem
     private void Awake()
     {
         bndCheck = GetComponent<BoundsCheck>(); //Bounds Check 
+        bndCheck.keepOnScreen = false;
     }
 
     public Vector3 pos
@@ -31,25 +32,35 @@ public class Enemy : MonoBehaviour      //Superclass from which the other 2 Enem
     public virtual void Move()
     {
         Vector3 _tempPos = pos;
-        
-        
+       
         _tempPos.y -= speed * Time.deltaTime;       //Creating virtual function that can e overriden by the subclass of Enemy
        
         pos = _tempPos;
+    }
+
+    protected void isOff()
+    {
+        if (bndCheck != null && bndCheck.offDown)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    //Allow the bullets to destroy the enemy
+    void OnTriggerEnter(Collider col)
+    {
+        GameObject otherObject = col.gameObject;
+        if (otherObject.tag == "ProjectileHero")//if the collision is from a hero bullet destroy both objects
+        {
+            Destroy(otherObject);
+            Destroy(gameObject);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         Move();
-
-        if (bndCheck != null && bndCheck.offDown)
-        {
-            //check to make sure it's gone off the bottom of the screen
-            if (pos.y < bndCheck.camHeight - bndCheck.radius)
-            {
-                Destroy(gameObject);
-            }
-        }
+        isOff();
     }
 }

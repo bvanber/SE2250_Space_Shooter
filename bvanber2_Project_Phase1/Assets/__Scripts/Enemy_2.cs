@@ -21,6 +21,6 @@ public class Enemy_2 :  Enemy
     void Update()
     {
         this.Move();
-        
+        isOff();
     }
 }

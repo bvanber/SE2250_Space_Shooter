@@ -43,8 +43,7 @@ public class Enemy_1 : Enemy
     // Update is called once per frame
     void Update()
     {
-
         this.Move();
-        
+        isOff();
     }
 }

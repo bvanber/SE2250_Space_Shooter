@@ -10,9 +10,9 @@ public class Main : MonoBehaviour
     public GameObject[] prefabEnemies = new GameObject[3];
     private float _timer;
     private Vector3 _startPos;
-    private List<GameObject> _enemies = new List<GameObject>();
-    private List<GameObject> _toDelete = new List<GameObject>();
-
+    public WeaponDefinition[] weaponDefinitions;
+    static Dictionary<WeaponType, WeaponDefinition> WEAP_DICT;
+   
     void Awake()
     {
         if (scene == null) //checks if scene is null
@@ -23,6 +23,24 @@ public class Main : MonoBehaviour
         {
             Debug.LogError("Main.Awake()!");
         }
+        
+        //add weapons to the list
+        WEAP_DICT = new Dictionary<WeaponType, WeaponDefinition>();
+        foreach(WeaponDefinition definition in weaponDefinitions)
+        {
+            WEAP_DICT[definition.type] = definition;
+        }
+    }
+    
+    //get the existing weapon with the desired type
+    static public WeaponDefinition getWeaponDefinition(WeaponType tp)
+    {
+        if (WEAP_DICT.ContainsKey(tp))
+        {
+            return WEAP_DICT[tp];
+        }
+        //the right weapon wasnt found, return a new one with default none
+        else return new WeaponDefinition();
     }
 
     // Start is called before the first frame update
@@ -45,31 +63,11 @@ public class Main : MonoBehaviour
             if (num == 0 || num == 1) { _startPos = new Vector3(Random.Range(-25, 25), 45, 0); }
             else { _startPos = new Vector3(40, Random.Range(-20, 55), 0); }
 
-            GameObject enn= Instantiate(prefabEnemies[(num) % 3],_startPos, Quaternion.identity);
-            _enemies.Add(enn);
+            Instantiate(prefabEnemies[(num) % 3],_startPos, Quaternion.identity);
             _timer = 2f;//reset the timer
         }
-
-
-        foreach(GameObject dooDad in _enemies)
-        {
-            //check if the enemies are out of view
-            if (dooDad == null || dooDad.transform.position.x<-35|| dooDad.transform.position.x > 41|| dooDad.transform.position.y < -50|| dooDad.transform.position.x > 70)
-            {
-                _toDelete.Add(dooDad);
-            }
-        }
-
-
-        //delete the out of view enemies
-        foreach (GameObject bye in _toDelete)
-        {
-            _enemies.Remove(bye);
-            Destroy(bye);
-        }
-        _toDelete.Clear();
     }
-
+   
     public void DelayedRestart(float delay)
     {
         //invoked the Restart() method in delay seconds

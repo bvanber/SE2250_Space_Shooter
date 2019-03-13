@@ -54,7 +54,7 @@ public class BoundsCheck : MonoBehaviour
 
         //checks if object is still present on the screen and returns boolean value
         isOnScreen = !(offRight || offLeft || offUp || offDown);
-        if (keepOnScreen && !isOnScreen)
+        if (keepOnScreen && !isOnScreen)//keeps it on the screen if it should stay on
         {
             transform.position = pos;
             isOnScreen = true;

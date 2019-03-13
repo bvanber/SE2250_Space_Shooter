@@ -155,6 +155,22 @@ MonoBehaviour:
   - {fileID: 1655127428708872, guid: cb9d056118a1b4845810fddd1e376b9a, type: 3}
   - {fileID: 1763081411557376, guid: b5e3ee4d0d50a1841a8a95b516f5f3cf, type: 3}
   - {fileID: 1179878267519088, guid: 68ea4b7937e3f5049975ecf880e35498, type: 3}
+  weaponDefinitions:
+  - type: 0
+    projectilePrefab: {fileID: 8742990064463270190, guid: dd2c02b1af8cc6b4ea5c9dba18576932,
+      type: 3}
+    projectileColour: {r: 0, g: 0, b: 0, a: 0}
+    velocity: 0
+  - type: 1
+    projectilePrefab: {fileID: 8742990064463270190, guid: dd2c02b1af8cc6b4ea5c9dba18576932,
+      type: 3}
+    projectileColour: {r: 0.18244925, g: 0.9433962, b: 0.80847055, a: 0}
+    velocity: 40
+  - type: 2
+    projectilePrefab: {fileID: 8742990064463270190, guid: dd2c02b1af8cc6b4ea5c9dba18576932,
+      type: 3}
+    projectileColour: {r: 0.9528302, g: 0.21124065, b: 0.818894, a: 0}
+    velocity: 50
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -302,6 +318,10 @@ MonoBehaviour:
   rollMult: -45
   pitchMult: 30
   gameRestartDelay: 2
+  projectile: {fileID: 8742990064463270190, guid: dd2c02b1af8cc6b4ea5c9dba18576932,
+    type: 3}
+  weaponType: 0
+  projectileSpeed: 40
   _shieldLevel: 1
 --- !u!1001 &452045868672182585
 PrefabInstance:

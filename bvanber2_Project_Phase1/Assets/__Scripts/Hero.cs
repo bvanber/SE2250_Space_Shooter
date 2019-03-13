@@ -11,6 +11,11 @@ public class Hero : MonoBehaviour
     public float rollMult = -45;
     public float pitchMult = 30;
     public float gameRestartDelay = 2f;
+    public GameObject projectile;
+    public WeaponType weaponType;
+    public float projectileSpeed = 1f;
+    public delegate void WeaponFireDelegate();
+    public WeaponFireDelegate fireDelegate;
 
     [Header("Set Dynamically")]
     [SerializeField]
@@ -27,27 +32,33 @@ public class Hero : MonoBehaviour
         {
             Debug.LogError("Hero.Awake() - Attempted to assign second Hero.s!");
         }
+        //assign the delegate
+        Weapon weapon = transform.Find("Weapon").gameObject.GetComponent <Weapon> ();
+        weaponType=WeaponType.blaster;//This changes the weapon type, use these
+        weapon.setType(weaponType);//two lines when the weapon type changes
+        fireDelegate += weapon.Fire;
     }
-	
-	// Update is called once per frame
-	void Update () 
+
+    // Update is called once per frame
+    void Update()
     {
         float _xAxis = Input.GetAxis("Horizontal");
         float _yAxis = Input.GetAxis("Vertical");
 
-         Vector3 _pos = transform.position;
+        Vector3 _pos = transform.position;
         _pos.x += _xAxis * speed * Time.deltaTime;
         _pos.y += _yAxis * speed * Time.deltaTime;
         transform.position = _pos;
 
         transform.rotation = Quaternion.Euler(_yAxis * pitchMult, _xAxis * rollMult, 0);
 
-        Vector3 _pos2 = Camera.main.WorldToViewportPoint(transform.position);
-        _pos2.x = Mathf.Clamp(_pos2.x, 0.035f, 0.965f);
-        _pos2.y = Mathf.Clamp(_pos2.y, 0.035f, 0.965f);
-        transform.position = Camera.main.ViewportToWorldPoint(_pos2);
+        //Allow the ship to shoot
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            fireDelegate();
+        }
     }
-
+    
     private void OnTriggerEnter(Collider other)
     {
         Transform rootT = other.gameObject.transform.root;
@@ -60,7 +71,7 @@ public class Hero : MonoBehaviour
                 return;
             }
             lastTriggerGo = go;
-
+            //check to see what triggered the collision
             if (go.tag == "Enemy")
             {
                 shieldLevel--;
@@ -72,7 +83,7 @@ public class Hero : MonoBehaviour
             }
         }
     }
-
+    //property for the shield
     public float shieldLevel
     {
         get
