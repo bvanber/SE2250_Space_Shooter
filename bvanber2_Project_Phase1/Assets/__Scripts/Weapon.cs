@@ -23,23 +23,14 @@ public class Weapon : MonoBehaviour
     [Header("Set Dynamically")]
     [SerializeField]
     private WeaponType _type;
-    private WeaponDefinition def;
+    private WeaponDefinition _def;
     private GameObject collar;
     private Renderer _collarRend;
-   
-    // Start is called before the first frame update
-    void Start()
-    {
-        collar = transform.Find("Collar").gameObject;
-        _collarRend = collar.GetComponent<Renderer>();
-        //set the collar on the weapon to be the same colour as the projectile so you know which weapon you are using
-        _collarRend.material.color = def.projectileColour;
-    }
 
     public void Fire()
     {
         Projectile p;
-        Vector3 velocity = Vector3.up * def.velocity;
+        Vector3 velocity = Vector3.up * _def.velocity;
         if (transform.up.y < 0)
         {
             velocity.y = -velocity.y;
@@ -70,7 +61,7 @@ public class Weapon : MonoBehaviour
     //make the projectile
     public Projectile makeProjectile()
     {
-        GameObject bullet = Instantiate(def.projectilePrefab);
+        GameObject bullet = Instantiate(_def.projectilePrefab);
         if (transform.parent.gameObject.tag == "Hero")
         {
             bullet.tag = "ProjectileHero";
@@ -82,7 +73,7 @@ public class Weapon : MonoBehaviour
         //make the projectile originate from the end of the weapon
         bullet.transform.position = collar.transform.position;
         Projectile p = bullet.GetComponent<Projectile>();
-        p.rend.material.color = def.projectileColour;
+        p.rend.material.color = _def.projectileColour;
         return p;
     }
 
@@ -96,7 +87,12 @@ public class Weapon : MonoBehaviour
             return;
         }
         else this.gameObject.SetActive(true);
-        def = Main.getWeaponDefinition(ty);
+        _def = Main.getWeaponDefinition(ty);
+
+        collar = transform.Find("Collar").gameObject;
+        _collarRend = collar.GetComponent<Renderer>();
+        //set the collar on the weapon to be the same colour as the projectile so you know which weapon you are using
+        _collarRend.material.color = _def.projectileColour;
     }
     
 }

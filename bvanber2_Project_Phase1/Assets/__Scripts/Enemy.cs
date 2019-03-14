@@ -5,10 +5,8 @@ using UnityEngine;
 public class Enemy : MonoBehaviour      //Superclass from which the other 2 Enemy scripts inherit
 {
     [Header("Set in Inspector: Enemy")]
-    public float speed = 10f;
-    public float fireRate = 0.3f;
-    public float health = 10;               //Defining variables
-    public int score = 100;
+    public float speed = 10f;           //Defining variables
+    public float health = 1;            //health for enemy resilience
     protected BoundsCheck bndCheck;
 
     private void Awake()
@@ -52,8 +50,12 @@ public class Enemy : MonoBehaviour      //Superclass from which the other 2 Enem
         GameObject otherObject = col.gameObject;
         if (otherObject.tag == "ProjectileHero")//if the collision is from a hero bullet destroy both objects
         {
-            Destroy(otherObject);
-            Destroy(gameObject);
+            health--;
+            if (health <= 0)
+            {
+                 Destroy(gameObject);
+            }
+           Destroy(otherObject);
         }
     }
 

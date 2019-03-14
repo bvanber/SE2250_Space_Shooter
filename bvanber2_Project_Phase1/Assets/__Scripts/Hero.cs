@@ -57,6 +57,20 @@ public class Hero : MonoBehaviour
         {
             fireDelegate();
         }
+
+        //switch between weapons when E is pressed
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            switchWeapon();
+        }
+    }
+    //function to switch beween the simple weapon and blaster weapon
+    void switchWeapon()
+    {
+        Weapon weapon = transform.Find("Weapon").gameObject.GetComponent<Weapon>();
+        if (weaponType == WeaponType.blaster) weaponType = WeaponType.simple;
+        else weaponType = WeaponType.blaster;
+        weapon.setType(weaponType);
     }
     
     private void OnTriggerEnter(Collider other)

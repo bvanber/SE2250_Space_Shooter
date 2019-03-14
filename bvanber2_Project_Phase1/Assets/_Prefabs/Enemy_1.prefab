@@ -414,9 +414,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  fireRate: 0.3
-  health: 10
-  score: 100
+  health: 2
 --- !u!54 &54231723743378496
 Rigidbody:
   m_ObjectHideFlags: 0

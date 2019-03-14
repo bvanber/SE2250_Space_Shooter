@@ -18,8 +18,8 @@ public class Enemy_1 : Enemy
         else
         {
             gameObject.transform.Rotate(0, 0, 45);
-        }        
-        
+        }
+        health = 2;        
     }
     override public void Move()
     {

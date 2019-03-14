@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Enemy_2 :  Enemy
 {
-
+    void Start()
+    {
+        health = 3;
+    }
     override public void Move()
     {
         Vector3 _tempPos = pos;
