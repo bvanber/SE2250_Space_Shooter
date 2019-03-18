@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy_2 :  Enemy
 {
+    public int points2 = 300;
     void Start()
     {
         health = 3;
@@ -19,7 +20,21 @@ public class Enemy_2 :  Enemy
      
         pos = _tempPos;
     }
+    public override void OnTriggerEnter(Collider col)
+    {
+        GameObject otherObject = col.gameObject;
+        if (otherObject.tag == "ProjectileHero")//if the collision is from a hero bullet destroy both objects
+        {
+            health--;
 
+            ScoreManager.ScoreIncrease(points2); //Calling function to increase score 
+            if (health <= 0)
+            {
+                Destroy(gameObject);
+            }
+            Destroy(otherObject);
+        }
+    }
     // Update is called once per frame
     void Update()
     {

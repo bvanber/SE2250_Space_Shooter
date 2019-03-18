@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour      //Superclass from which the other 2 Enem
     [Header("Set in Inspector: Enemy")]
     public float speed = 10f;           //Defining variables
     public float health = 1;            //health for enemy resilience
+    public int points = 100;
     protected BoundsCheck bndCheck;
 
     private void Awake()
@@ -45,12 +46,14 @@ public class Enemy : MonoBehaviour      //Superclass from which the other 2 Enem
     }
 
     //Allow the bullets to destroy the enemy
-    void OnTriggerEnter(Collider col)
-    {
+    public virtual void OnTriggerEnter(Collider col) //Making function virtual so that different amount of points can be added to
+    {                                                //score depending on the destroyed enemy
         GameObject otherObject = col.gameObject;
         if (otherObject.tag == "ProjectileHero")//if the collision is from a hero bullet destroy both objects
         {
             health--;
+            
+            ScoreManager.ScoreIncrease(points);    //Calling function to increase score 
             if (health <= 0)
             {
                  Destroy(gameObject);

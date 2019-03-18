@@ -7,6 +7,7 @@ public class Enemy_1 : Enemy
 {
     private static Random _rand = new Random();        //Random numbers 1 or 2 to determine diagonal movement
     private int _randomNum = _rand.Next(0, 2);
+    public int points1 = 200;
    
     // Start is called before the first frame update
     void Start()
@@ -37,6 +38,21 @@ public class Enemy_1 : Enemy
             _tempPos.x += speed * Time.deltaTime;
             pos = _tempPos;
 
+        }
+    }
+    public override void OnTriggerEnter(Collider col)
+    {
+        GameObject otherObject = col.gameObject;
+        if (otherObject.tag == "ProjectileHero")//if the collision is from a hero bullet destroy both objects
+        {
+            health--;
+
+            ScoreManager.ScoreIncrease(points1); //Calling function to increase score 
+            if (health <= 0)
+            {
+                Destroy(gameObject);
+            }
+            Destroy(otherObject);
         }
     }
 
