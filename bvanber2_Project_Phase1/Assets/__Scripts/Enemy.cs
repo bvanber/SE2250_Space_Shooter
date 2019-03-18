@@ -53,10 +53,11 @@ public class Enemy : MonoBehaviour      //Superclass from which the other 2 Enem
         {
             health--;
             
-            ScoreManager.ScoreIncrease(points);    //Calling function to increase score 
+            
             if (health <= 0)
             {
                  Destroy(gameObject);
+                ScoreManager.ScoreIncrease(points);    //Calling function to increase score 
             }
            Destroy(otherObject);
         }

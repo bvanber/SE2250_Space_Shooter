@@ -47,9 +47,10 @@ public class Enemy_1 : Enemy
         {
             health--;
 
-            ScoreManager.ScoreIncrease(points1); //Calling function to increase score 
+            
             if (health <= 0)
             {
+                ScoreManager.ScoreIncrease(points1); //Calling function to increase score 
                 Destroy(gameObject);
             }
             Destroy(otherObject);
