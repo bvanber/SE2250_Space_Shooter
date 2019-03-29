@@ -340,6 +340,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   health: 1
+  points: 100
 --- !u!114 &7166172241076713613
 MonoBehaviour:
   m_ObjectHideFlags: 0

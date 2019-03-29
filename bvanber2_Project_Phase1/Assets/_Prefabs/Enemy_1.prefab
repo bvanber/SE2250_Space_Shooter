@@ -415,6 +415,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   health: 2
+  points: 100
+  projectile: {fileID: 3843655523671300146, guid: ff93593f765fe994aa20f5d8a08ec508,
+    type: 3}
+  weaponType: 0
+  projectileSpeed: 1
+  points1: 200
 --- !u!54 &54231723743378496
 Rigidbody:
   m_ObjectHideFlags: 0

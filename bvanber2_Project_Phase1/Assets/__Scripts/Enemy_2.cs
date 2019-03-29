@@ -4,11 +4,29 @@ using UnityEngine;
 
 public class Enemy_2 :  Enemy
 {
+    public GameObject projectile;
+    public WeaponType weaponType;
+    public float projectileSpeed = 1f;
+    public delegate void WeaponFireDelegate(); //Adding weapon functionality to Enemy_2
+    public WeaponFireDelegate fireDelegate;
     public int points2 = 300;
+    public int shootcCount = 0;
+    public Weapon weapon;
+    void Awake()
+    {
+        //assign the delegate
+        Weapon weapon = transform.Find("Weapon").gameObject.GetComponent<Weapon>();
+       
+        weaponType = WeaponType.enemy;//This changes the weapon type, use these
+        weapon.setType(weaponType);//two lines when the weapon type changes
+        fireDelegate += weapon.Fire;
+    }
+
     void Start()
     {
         health = 3;
     }
+
     override public void Move()
     {
         Vector3 _tempPos = pos;
@@ -25,8 +43,9 @@ public class Enemy_2 :  Enemy
         GameObject otherObject = col.gameObject;
         if (otherObject.tag == "ProjectileHero")//if the collision is from a hero bullet destroy both objects
         {
+            fireDelegate(); //When enemy is hit by the hero, fire projectile 
             health--;
-
+            
             
             if (health <= 0)
             {

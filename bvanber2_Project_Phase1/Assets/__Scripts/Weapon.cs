@@ -6,8 +6,10 @@ using UnityEngine;
     {
         none,
         simple,
-        blaster
+        blaster,
+        enemy //adding weapon type for enemy
     }
+
 
 [System.Serializable]
 public class WeaponDefinition
@@ -26,7 +28,7 @@ public class Weapon : MonoBehaviour
     private WeaponDefinition _def;
     private GameObject collar;
     private Renderer _collarRend;
-
+    
     public void Fire()
     {
         Projectile p;
@@ -37,14 +39,12 @@ public class Weapon : MonoBehaviour
         }
         //fire based on which kind of weapon
         switch (_type)
-        {
+        {            
             case WeaponType.simple:
-               // _collarRend.material.color = Main.getWeaponDefinition(_type).projectileColour;
                 p = makeProjectile();
                 p.rigid.velocity = velocity;
                 break;
             case WeaponType.blaster:
-               // _collarRend.material.color = Main.getWeaponDefinition(_type).projectileColour;
                 p = makeProjectile();//middle bullet
                 p.rigid.velocity = velocity;
                 p = makeProjectile();//right bullet
@@ -54,7 +54,12 @@ public class Weapon : MonoBehaviour
                 p.transform.rotation = Quaternion.AngleAxis(-30, Vector3.back);
                 p.rigid.velocity = p.rigid.rotation * velocity;
                 break;
+            case WeaponType.enemy:
+                p = makeProjectile();
+                p.rigid.velocity = Vector3.down*_def.velocity;//Enemy weapon type shots straight down, not based on enemy orientation
+                break;
         }
+        SoundManager.soundManager.shotSound(); //Whenever weapon fires call the shotSound function
 
     }
 
@@ -62,11 +67,12 @@ public class Weapon : MonoBehaviour
     public Projectile makeProjectile()
     {
         GameObject bullet = Instantiate(_def.projectilePrefab);
-        if (transform.parent.gameObject.tag == "Hero")
-        {
+       if (transform.parent.gameObject.tag == "Hero")
+       {
             bullet.tag = "ProjectileHero";
-        }
-        else
+            
+       }
+       if(transform.parent.gameObject.tag == "Enemy")//Tagging projectiles based on the gameobject
         {
             bullet.tag = "ProjectileEnemy";
         }

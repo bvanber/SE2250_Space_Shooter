@@ -75,9 +75,10 @@ public class Hero : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
+
         Transform rootT = other.gameObject.transform.root;
         GameObject go = rootT.gameObject;
-
+  
         if (go != null)
         {
             if (go == lastTriggerGo)
@@ -91,11 +92,19 @@ public class Hero : MonoBehaviour
                 shieldLevel--;
                 Destroy(go);
             }
+            else if(go.tag == "ProjectileEnemy")
+            {
+
+                shieldLevel--;
+                Destroy(go);
+            }
             else
             {
                 print("Triggered by non-Enemy: " + go.name);
+                return; 
             }
         }
+        SoundManager.soundManager.crashSound(); //When hero is hit call crashSound function
     }
     //property for the shield
     public float shieldLevel

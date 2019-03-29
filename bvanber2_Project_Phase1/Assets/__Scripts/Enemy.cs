@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour      //Superclass from which the other 2 Enemy scripts inherit
 {
     [Header("Set in Inspector: Enemy")]
-    public float speed = 10f;           //Defining variables
+    public float speed = 0.5f;           //Defining variables
     public float health = 1;            //health for enemy resilience
     public int points = 100;
     protected BoundsCheck bndCheck;

@@ -63,6 +63,7 @@
      <Compile Include="Assets\__Scripts\Projectile.cs" />
      <Compile Include="Assets\__Scripts\ScoreManager.cs" />
      <Compile Include="Assets\__Scripts\Shield.cs" />
+     <Compile Include="Assets\__Scripts\SoundManager.cs" />
      <Compile Include="Assets\__Scripts\Weapon.cs" />
      <None Include="Assets\_Materials\UnlitAlpha.shader" />
  <Reference Include="Unity.TextMeshPro.Editor">
