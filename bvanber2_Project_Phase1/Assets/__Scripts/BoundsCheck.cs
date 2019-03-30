@@ -5,7 +5,7 @@ using UnityEngine;
 public class BoundsCheck : MonoBehaviour
 {
     [Header("Set in Inspector")]
-    public float radius = 1f;
+    public float radius = -1f;
     public bool keepOnScreen = true;
 
     [Header("Set dynamically")]

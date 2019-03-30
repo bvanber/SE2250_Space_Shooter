@@ -160,12 +160,12 @@ MonoBehaviour:
   speed: 10
   health: 3
   points: 100
+  powerUp: {fileID: 5518428062991327717, guid: 723e2e4a64a06574480a55b3dcaa4ef0, type: 3}
   projectile: {fileID: 5194621547538208090, guid: 2584ada59f46759439c67de1035f3a5a,
     type: 3}
   weaponType: 2
   projectileSpeed: 1
   points2: 300
-  shootcCount: 0
   weapon: {fileID: 5801813973277785013}
 --- !u!114 &165894683184825516
 MonoBehaviour:

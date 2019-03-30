@@ -8,6 +8,9 @@ TagManager:
   - Enemy
   - ProjectileHero
   - ProjectileEnemy
+  - UpShield
+  - Shield
+  - Collar
   layers:
   - Default
   - TransparentFX

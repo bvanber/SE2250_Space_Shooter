@@ -11,6 +11,7 @@ public class Hero : MonoBehaviour
     public float rollMult = -45;
     public float pitchMult = 30;
     public float gameRestartDelay = 2f;
+    //fields relating to weapons
     public GameObject projectile;
     public WeaponType weaponType;
     public float projectileSpeed = 1f;
@@ -21,6 +22,7 @@ public class Hero : MonoBehaviour
     [SerializeField]
     private float _shieldLevel = 1;
     private GameObject lastTriggerGo = null;
+    public bool isInvincible = false;
 
     void Awake() //checks if ship is null to avoid null reference exception
     {
@@ -37,6 +39,7 @@ public class Hero : MonoBehaviour
         weaponType=WeaponType.blaster;//This changes the weapon type, use these
         weapon.setType(weaponType);//two lines when the weapon type changes
         fireDelegate += weapon.Fire;
+        gameObject.GetComponent<FlashingColourManager>().status = Status.off;
     }
 
     // Update is called once per frame
@@ -79,7 +82,7 @@ public class Hero : MonoBehaviour
         Transform rootT = other.gameObject.transform.root;
         GameObject go = rootT.gameObject;
   
-        if (go != null)
+        if (go != null)//in case its already been destroyed
         {
             if (go == lastTriggerGo)
             {
@@ -87,12 +90,12 @@ public class Hero : MonoBehaviour
             }
             lastTriggerGo = go;
             //check to see what triggered the collision
-            if (go.tag == "Enemy")
+            if (go.tag == "Enemy"&& !isInvincible)
             {
                 shieldLevel--;
                 Destroy(go);
             }
-            else if(go.tag == "ProjectileEnemy")
+            else if(go.tag == "ProjectileEnemy" && !isInvincible)
             {
 
                 shieldLevel--;

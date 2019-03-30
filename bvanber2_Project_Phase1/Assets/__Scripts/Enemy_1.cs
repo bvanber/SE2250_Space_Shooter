@@ -9,9 +9,9 @@ public class Enemy_1 : Enemy
     private static Random _rand = new Random();        //Random numbers 1 or 2 to determine diagonal movement
     private int _randomNum = _rand.Next(0, 2);
     public int points1 = 200;
+    static private int _dropUpShield = 3; //drops a Shield powerup every 3 kills of this enemy
    
     // Start is called before the first frame update
-   
     void Start()
     {
         if(_randomNum == 0)
@@ -24,6 +24,7 @@ public class Enemy_1 : Enemy
         }
         health = 2;        
     }
+
     override public void Move()
     {
         Vector3 _tempPos = pos;
@@ -42,6 +43,7 @@ public class Enemy_1 : Enemy
 
         }
     }
+
     public override void OnTriggerEnter(Collider col)
     {
         GameObject otherObject = col.gameObject;
@@ -54,6 +56,13 @@ public class Enemy_1 : Enemy
             if (health <= 0)
             {
                 ScoreManager.ScoreIncrease(points1); //Calling function to increase score 
+                //is it time to drop a powerup
+                if (_dropUpShield > 0) _dropUpShield--;
+                else
+                {
+                    _dropUpShield = 3;
+                    DropPowerUp();
+                }
                 Destroy(gameObject);
             }
             Destroy(otherObject);
@@ -64,6 +73,6 @@ public class Enemy_1 : Enemy
     void Update()
     {
         this.Move();
-        isOff();
+        IsOff();
     }
 }

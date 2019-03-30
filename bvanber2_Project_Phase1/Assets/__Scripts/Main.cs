@@ -60,8 +60,8 @@ public class Main : MonoBehaviour
             //get a random number out of 3 for the enemy
             int num = rand.Next()%3;
             //if enemy 0 or 1 start above the view with a random x value otherwise start with a random y value if enemy 2
-            if (num == 0 || num == 1) { _startPos = new Vector3(Random.Range(-25, 25), 45, 0); }
-            else { _startPos = new Vector3(40, Random.Range(-20, 55), 0); }
+            if (num == 0 || num == 1) { _startPos = new Vector3(Random.Range(-25, 25), 40, 0); }
+            else { _startPos = new Vector3(30, Random.Range(0, 55), 0); }
 
             Instantiate(prefabEnemies[(num) % 3],_startPos, Quaternion.identity);
             _timer = 2f;//reset the timer
@@ -78,5 +78,6 @@ public class Main : MonoBehaviour
     {
         //reload scene to restart the game
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        ScoreManager.ResetScore();
     }
 }

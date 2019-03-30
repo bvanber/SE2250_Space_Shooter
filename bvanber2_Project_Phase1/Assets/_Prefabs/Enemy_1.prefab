@@ -416,10 +416,7 @@ MonoBehaviour:
   speed: 10
   health: 2
   points: 100
-  projectile: {fileID: 3843655523671300146, guid: ff93593f765fe994aa20f5d8a08ec508,
-    type: 3}
-  weaponType: 0
-  projectileSpeed: 1
+  powerUp: {fileID: 514643902037000605, guid: 9bcbd8428b3c40a4ea58905561eb0265, type: 3}
   points1: 200
 --- !u!54 &54231723743378496
 Rigidbody:
@@ -449,7 +446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5dd5fa917bd9245c2a163e00a8aea681, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: -2.5
+  radius: -8
   keepOnScreen: 0
   isOnScreen: 1
   camWidth: 0

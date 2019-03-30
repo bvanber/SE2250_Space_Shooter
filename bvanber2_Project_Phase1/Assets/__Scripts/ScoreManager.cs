@@ -13,6 +13,10 @@ public class ScoreManager : MonoBehaviour
     {
         _score += points;
     }
+    public static void ResetScore()
+    {
+        _score = 0;
+    }
    
     void Awake()
     {

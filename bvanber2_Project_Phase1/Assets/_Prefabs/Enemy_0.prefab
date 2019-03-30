@@ -341,6 +341,7 @@ MonoBehaviour:
   speed: 10
   health: 1
   points: 100
+  powerUp: {fileID: 5254549264687742114, guid: e3fe2ec0a9186a2448cf952ef266f92c, type: 3}
 --- !u!114 &7166172241076713613
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -9,8 +9,10 @@ public class Enemy : MonoBehaviour      //Superclass from which the other 2 Enem
     public float health = 1;            //health for enemy resilience
     public int points = 100;
     protected BoundsCheck bndCheck;
+    public GameObject powerUp;
+    private static int _dropShrinker = 7;
 
-    private void Awake()
+    public void Awake()
     {
         bndCheck = GetComponent<BoundsCheck>(); //Bounds Check 
         bndCheck.keepOnScreen = false;
@@ -37,9 +39,9 @@ public class Enemy : MonoBehaviour      //Superclass from which the other 2 Enem
         pos = _tempPos;
     }
 
-    protected void isOff()
+    protected void IsOff()
     {
-        if (bndCheck != null && bndCheck.offDown)
+        if (bndCheck != null && !bndCheck.isOnScreen)
         {
             Destroy(gameObject);
         }
@@ -49,24 +51,43 @@ public class Enemy : MonoBehaviour      //Superclass from which the other 2 Enem
     public virtual void OnTriggerEnter(Collider col) //Making function virtual so that different amount of points can be added to
     {                                                //score depending on the destroyed enemy
         GameObject otherObject = col.gameObject;
-        if (otherObject.tag == "ProjectileHero")//if the collision is from a hero bullet destroy both objects
+        if (otherObject != null)//in case its already been destroyed
         {
-            health--;
-            
-            
-            if (health <= 0)
+            if (otherObject.tag == "ProjectileHero")//if the collision is from a hero bullet destroy both objects
             {
-                 Destroy(gameObject);
-                ScoreManager.ScoreIncrease(points);    //Calling function to increase score 
+                health--;           
+                if (health <= 0)
+                {
+                    ScoreManager.ScoreIncrease(points);    //Calling function to increase score 
+                    if (_dropShrinker > 0)
+                    {
+                        _dropShrinker--;
+                    }
+                    else
+                    {
+                        _dropShrinker = 3;
+                        DropPowerUp();
+                    }
+                    Destroy(gameObject);
+                }
+                Destroy(otherObject);
             }
-           Destroy(otherObject);
         }
+        
+        
+    }
+
+    public virtual void DropPowerUp()
+    {
+        GameObject drop = Instantiate(powerUp);
+        drop.gameObject.transform.position = gameObject.transform.position;
+        drop.GetComponent<Rigidbody>().velocity = Vector3.down * 10;
     }
 
     // Update is called once per frame
     void Update()
     {
         Move();
-        isOff();
+        IsOff();
     }
 }
