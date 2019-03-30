@@ -48,11 +48,8 @@ public class Enemy_1 : Enemy
     {
         GameObject otherObject = col.gameObject;
         if (otherObject.tag == "ProjectileHero")//if the collision is from a hero bullet destroy both objects
-        {
-          
-            health--;
-
-            
+        {          
+            health--;            
             if (health <= 0)
             {
                 ScoreManager.ScoreIncrease(points1); //Calling function to increase score 

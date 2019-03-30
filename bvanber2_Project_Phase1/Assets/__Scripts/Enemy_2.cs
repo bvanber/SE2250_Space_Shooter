@@ -18,7 +18,6 @@ public class Enemy_2 :  Enemy
         health = 3;
         //assign the delegate
         Weapon weapon = transform.Find("Weapon").gameObject.GetComponent<Weapon>();
-
         weaponType = WeaponType.enemy;//This changes the weapon type, use these
         weapon.setType(weaponType);//two lines when the weapon type changes
         fireDelegate += weapon.Fire;

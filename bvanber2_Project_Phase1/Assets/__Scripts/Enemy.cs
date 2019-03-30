@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour      //Superclass from which the other 2 Enem
     public int points = 100;
     protected BoundsCheck bndCheck;
     public GameObject powerUp;
-    private static int _dropShrinker = 7;
+    private static int _dropShrinker=6;
 
     public void Awake()
     {
@@ -65,7 +65,7 @@ public class Enemy : MonoBehaviour      //Superclass from which the other 2 Enem
                     }
                     else
                     {
-                        _dropShrinker = 3;
+                        _dropShrinker = 6;
                         DropPowerUp();
                     }
                     Destroy(gameObject);

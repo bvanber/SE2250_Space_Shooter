@@ -8,11 +8,14 @@ public class PowerUpShrinkMe : MonoBehaviour
     private GameObject _ship;
     private bool _hasCollided;//field to keep track of whethter the powerup has hit the ship
     private Vector3 _origScale;
+    private BoundsCheck _bndsCheck;
 
     // Start is called before the first frame update
     void Start()
     {
         _hasCollided = false;
+        _bndsCheck = GetComponent<BoundsCheck>(); //Bounds Check 
+        _bndsCheck.keepOnScreen = false;
     }
 
     void OnTriggerEnter(Collider col)
@@ -39,8 +42,11 @@ public class PowerUpShrinkMe : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (_bndsCheck.offDown) Destroy(gameObject);//if the gameobject isnt picked up
+
         //the powerup pickup is constantly shrinking and growing
         gameObject.transform.localScale = new Vector3(1f, 1f, 1f) * (0.3f*Mathf.Sin(2*Time.time)+0.7f);
+
         //upon collision, the ship slowly regrows now
         if (_hasCollided && _shrinkTime<=1f &&_ship!=null)
         {
