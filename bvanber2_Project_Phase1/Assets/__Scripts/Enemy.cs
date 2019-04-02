@@ -10,12 +10,13 @@ public class Enemy : MonoBehaviour      //Superclass from which the other 2 Enem
     public int points = 100;
     protected BoundsCheck bndCheck;
     public GameObject powerUp;
-    private static int _dropPowerUp=6;
+    private static int _dropPowerUp;
     protected int powerUpFreq = 6;
-    public delegate void WeaponFireDelegate();
+    public delegate void WeaponFireDelegate(); //delegate for enemies that shoot
     public WeaponFireDelegate fireDelegate;
 
-    protected virtual int PowerUpCounter
+    //property for the powerup counter for the base class
+    public virtual int PowerUpCounter
     {
         get{
             return _dropPowerUp;
@@ -26,6 +27,7 @@ public class Enemy : MonoBehaviour      //Superclass from which the other 2 Enem
         }
     }
 
+    //empty fire function for enemies that dont shoot
     void fire()
     {
 
@@ -35,8 +37,8 @@ public class Enemy : MonoBehaviour      //Superclass from which the other 2 Enem
     {
         bndCheck = GetComponent<BoundsCheck>(); //Bounds Check 
         bndCheck.keepOnScreen = false;
-        fireDelegate +=fire;
-        
+        fireDelegate +=fire;//default shooting is no shooting
+        _dropPowerUp = powerUpFreq;//initialize the powerup frequency
     }
 
     public Vector3 pos
@@ -58,7 +60,7 @@ public class Enemy : MonoBehaviour      //Superclass from which the other 2 Enem
         pos = _tempPos;
         
     }
-
+    //bounds checking
     protected void IsOff()
     {
         if (bndCheck != null && !bndCheck.isOnScreen)
@@ -82,7 +84,7 @@ public class Enemy : MonoBehaviour      //Superclass from which the other 2 Enem
                     ScoreManager.ScoreIncrease(points);    //Calling function to increase score 
                     if (PowerUpCounter > 0)
                     {
-                        PowerUpCounter--;
+                        PowerUpCounter = PowerUpCounter - 1; ;
                     }
                     else
                     {
@@ -105,6 +107,7 @@ public class Enemy : MonoBehaviour      //Superclass from which the other 2 Enem
         
     }
 
+    //dropping a powerup 
     public virtual void DropPowerUp()
     {
         GameObject drop = Instantiate(powerUp);

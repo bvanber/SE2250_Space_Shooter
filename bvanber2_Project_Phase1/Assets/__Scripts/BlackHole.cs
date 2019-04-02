@@ -22,9 +22,6 @@ public class BlackHole : MonoBehaviour
     private List<GameObject> _toDelete = new List<GameObject>();
     public float sclaingFactor = 0.5f;
 
-    //private List<Vector3> _emitters =new List<Vector3>();
-    //private System.Random _rand = new System.Random();
-
     //define position as a field
     public Vector3 pos
     {
@@ -38,30 +35,27 @@ public class BlackHole : MonoBehaviour
         }
     }
 
-
     //on Start, get a reference to the hero ship
-
     public void Start()
     {
         if (Hero.ship!=null)_heroGO = Hero.ship.gameObject;
         
     }
-
     
-    /*public void OnTriggerEnter(Collider col)
+    public void OnTriggerEnter(Collider col)
     {
         GameObject otherObject = col.gameObject;
         Transform rootT = col.gameObject.transform.root;
         GameObject go = rootT.gameObject;
 
-        /*if (otherObject != null)
+        if (otherObject != null)
         {
-            if (go.tag != "Hero")
+            if (go.tag != "Hero" && go.tag !="PowerUp" && go.tag!="Meteor" && go.tag!="Enemy")
             {
                 Destroy(go);
             }
         }
-    }*/
+    }
 
     //Move function moves black hole directly down the screen, changing y position each update
     public void Move()

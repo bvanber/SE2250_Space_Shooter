@@ -73,15 +73,16 @@ public class Meteor : MonoBehaviour
                     Destroy(gameObject);
                 }
             }
-            //if the object is anything else aside from hero, destroy that object (the hero-meteor collision is handeled in the class Hero
-            else if (go.tag != "Hero")
+            //if the object is anything else aside from hero, destroy that object (the hero-meteor collision is handeled in the class Hero)
+            //powerups are also not destroyed by meteors
+            else if (go.tag != "Hero" && go.tag!= "PowerUp")
             {
                 Destroy(go);
             }
         }
     }
     //move the meteor and check if it is off screne each frame using Update
-void Update()
+    void Update()
     {
         Move();
         IsOff();

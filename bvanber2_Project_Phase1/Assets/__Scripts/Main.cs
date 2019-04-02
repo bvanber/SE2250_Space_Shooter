@@ -74,22 +74,6 @@ public class Main : MonoBehaviour
 
             enemies.Add(Instantiate(prefabEnemies[(num) % 3],_startPos, Quaternion.identity));
             _timer = 2f;//reset the timer
-
-            //check if the enemies in the list have been deleted
-            /*foreach (GameObject dooDad in enemies)
-            {                
-                if (dooDad==null)
-                {
-                    _toDelete.Add(dooDad);
-                }
-            }
-
-            //delete the out of view enemies
-            foreach (GameObject bye in _toDelete)
-            {
-                enemies.Remove(bye);
-            }
-            _toDelete.Clear();*/
         }
 
         //decrament timer2, when timer2 reaches 0, spawn a meteor
@@ -100,7 +84,7 @@ public class Main : MonoBehaviour
             _meteorPos = new Vector3(Random.Range(-25, 25), 40, 0);
             GameObject go = Instantiate(meteor, _meteorPos, Quaternion.identity);
             enemies.Add(go);
-            go.transform.localScale = go.transform.localScale * Random.Range(1.0f, 8.0f);
+            go.transform.localScale = go.transform.localScale * Random.Range(2.0f, 8.0f);
             _timer2 = 4f;//reset the timer
         }
 

@@ -379,7 +379,7 @@ GameObject:
   - component: {fileID: 1332722365966048458}
   m_Layer: 9
   m_Name: UpStarPower
-  m_TagString: Untagged
+  m_TagString: PowerUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -415,7 +415,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f396b9652811db45a98a9d3d0fab3be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flashy: {fileID: 0}
+  _timeLength: 80
+  shipFlashy: {fileID: 0}
 --- !u!114 &5518428062991327722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -436,6 +437,7 @@ MonoBehaviour:
   - {r: 0.4026344, g: 0.9811321, b: 0.9614984, a: 0}
   - {r: 0.73436695, g: 0.6367924, b: 1, a: 0}
   status: 0
+  _size: 0
 --- !u!114 &8878544185776671946
 MonoBehaviour:
   m_ObjectHideFlags: 0

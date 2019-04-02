@@ -7,8 +7,6 @@ public class Enemy_2 :  Enemy
     public GameObject projectile;
     public WeaponType weaponType;
     public float projectileSpeed = 1f;
-    //public delegate void WeaponFireDelegate(); //Adding weapon functionality to Enemy_2
-    //public WeaponFireDelegate fireDelegate;
     public int points2 = 300;
     public Weapon weapon;
     private static int _dropStar = 3;//drops a starPower Powerup every 3 kills of this enemy
@@ -16,15 +14,16 @@ public class Enemy_2 :  Enemy
     void Start()
     {
         health = 3;
-        powerUpFreq = 3;
+        this.powerUpFreq = 3;
+        PowerUpCounter = this.powerUpFreq;
         //assign the delegate
         Weapon weapon = transform.Find("Weapon").gameObject.GetComponent<Weapon>();
         weaponType = WeaponType.enemy;//This changes the weapon type, use these
         weapon.setType(weaponType);//two lines when the weapon type changes
         fireDelegate += weapon.Fire;
     }
-
-    protected override int PowerUpCounter
+    //property for the power up counter for this subclass
+    public override int PowerUpCounter
     {
         get
         {
@@ -48,37 +47,6 @@ public class Enemy_2 :  Enemy
         pos = _tempPos;
     }
 
-    /*public override void OnTriggerEnter(Collider col)
-    {
-        GameObject otherObject = col.gameObject;
-        if (otherObject.tag == "ProjectileHero")//if the collision is from a hero bullet destroy both objects
-        {
-            fireDelegate(); //When enemy is hit by the hero, fire projectile 
-            health--;
-            
-            
-            if (health <= 0)
-            {
-                ScoreManager.ScoreIncrease(points2); //Calling function to increase score 
-                if (_dropStar > 0) _dropStar--;
-                else
-                {
-                    DropPowerUp();
-                    _dropStar = powerUpFreq;
-                }
-                Destroy(gameObject);
-                Main.enemies.Remove(gameObject);
-            }
-            Destroy(otherObject);
-        }
-        if (otherObject.tag == "BlackHole")
-        {
-            print("enn 2 black hole");
-            Main.enemies.Remove(gameObject);
-            Destroy(gameObject);
-        }
-    }*/
-
     //need to override base method for dropping this powerup since theres more to do to initialize it
     public override void DropPowerUp()
     {
@@ -87,11 +55,4 @@ public class Enemy_2 :  Enemy
         drop.gameObject.transform.position = gameObject.transform.position;
         drop.GetComponent<Rigidbody>().velocity = Vector3.down * 10;
     }
-
-    // Update is called once per frame
-    /*void Update()
-    {
-        this.Move();
-        IsOff();
-    }*/
 }

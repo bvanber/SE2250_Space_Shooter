@@ -23,11 +23,12 @@ public class Enemy_1 : Enemy
             gameObject.transform.Rotate(0, 0, 45);
         }
         health = 2;
-        PowerUpCounter = 3;
-        powerUpFreq = 3;
+        this.powerUpFreq = 3;
+        this.PowerUpCounter = this.powerUpFreq;        
     }
 
-    protected override int PowerUpCounter
+    //property for the powerup for this subclass
+    public override int PowerUpCounter
     {
         get
         {
@@ -57,40 +58,4 @@ public class Enemy_1 : Enemy
 
         }
     }
-
-   /* public override void OnTriggerEnter(Collider col)
-    {
-        GameObject otherObject = col.gameObject;
-        if (otherObject.tag == "ProjectileHero")//if the collision is from a hero bullet destroy both objects
-        {          
-            health--;            
-            if (health <= 0)
-            {
-                ScoreManager.ScoreIncrease(points1); //Calling function to increase score 
-                //is it time to drop a powerup
-                if (_dropUpShield > 0) _dropUpShield--;
-                else
-                {
-                    _dropUpShield = powerUpFreq;
-                    DropPowerUp();
-                }
-                Destroy(gameObject);
-                Main.enemies.Remove(gameObject);
-            }
-            Destroy(otherObject);
-        }
-        if (otherObject.tag == "BlackHole")
-        {
-            print("enn 1 black hole");
-            Main.enemies.Remove(gameObject);
-            Destroy(gameObject);
-        }
-    }*/
-
-    // Update is called once per frame
-    /*void Update()
-    {
-        this.Move();
-        IsOff();
-    }*/
 }
