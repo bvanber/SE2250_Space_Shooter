@@ -17,6 +17,11 @@ public class Projectile : MonoBehaviour
         rigid = GetComponent<Rigidbody>();
         _bndsCheck = gameObject.GetComponent<BoundsCheck>();
     }
+
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.tag == "BlackHole") Destroy(gameObject);
+    }
    
     // Update is called once per frame
     void Update()

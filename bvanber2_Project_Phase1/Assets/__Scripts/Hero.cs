@@ -97,9 +97,16 @@ public class Hero : MonoBehaviour
             }
             else if(go.tag == "ProjectileEnemy" && !isInvincible)
             {
-
                 shieldLevel--;
                 Destroy(go);
+            }
+            else if(go.tag == "Meteor" && !isInvincible)
+            {
+                shieldLevel = -1;
+            }
+            else if (go.tag == "BlackHole")
+            {
+                shieldLevel = -1;
             }
             else
             {

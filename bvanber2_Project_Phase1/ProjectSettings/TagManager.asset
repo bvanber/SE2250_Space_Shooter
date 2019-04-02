@@ -11,6 +11,8 @@ TagManager:
   - UpShield
   - Shield
   - Collar
+  - Meteor
+  - BlackHole
   layers:
   - Default
   - TransparentFX

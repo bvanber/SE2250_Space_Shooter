@@ -8,8 +8,16 @@ public class Main : MonoBehaviour
     static public Main scene;
 
     public GameObject[] prefabEnemies = new GameObject[3];
+    public static List<GameObject> enemies = new List<GameObject>();
+    private List<GameObject> _toDelete = new List<GameObject>();
+    public GameObject meteor;
+    public GameObject blackHole;
     private float _timer;
+    private float _timer2;
+    private float _timer3;
     private Vector3 _startPos;
+    private Vector3 _meteorPos;
+    private Vector3 _blackHolePos;
     public WeaponDefinition[] weaponDefinitions;
     static Dictionary<WeaponType, WeaponDefinition> WEAP_DICT;
    
@@ -47,6 +55,7 @@ public class Main : MonoBehaviour
     void Start()
     {
         _timer = 1f;
+        _timer2 = 1f;
     }
 
     // Update is called once per frame
@@ -63,9 +72,47 @@ public class Main : MonoBehaviour
             if (num == 0 || num == 1) { _startPos = new Vector3(Random.Range(-25, 25), 40, 0); }
             else { _startPos = new Vector3(30, Random.Range(0, 55), 0); }
 
-            Instantiate(prefabEnemies[(num) % 3],_startPos, Quaternion.identity);
+            enemies.Add(Instantiate(prefabEnemies[(num) % 3],_startPos, Quaternion.identity));
             _timer = 2f;//reset the timer
+
+            //check if the enemies in the list have been deleted
+            /*foreach (GameObject dooDad in enemies)
+            {                
+                if (dooDad==null)
+                {
+                    _toDelete.Add(dooDad);
+                }
+            }
+
+            //delete the out of view enemies
+            foreach (GameObject bye in _toDelete)
+            {
+                enemies.Remove(bye);
+            }
+            _toDelete.Clear();*/
         }
+
+        //decrament timer2, when timer2 reaches 0, spawn a meteor
+        _timer2 -= Time.deltaTime;
+        if ((_timer2 <= 0f)&&((LevelManager.GetLevel() == 2)|| (LevelManager.GetLevel() == 3)))
+        {
+            //get a random stsrting x position for the meteor
+            _meteorPos = new Vector3(Random.Range(-25, 25), 40, 0);
+            GameObject go = Instantiate(meteor, _meteorPos, Quaternion.identity);
+            enemies.Add(go);
+            go.transform.localScale = go.transform.localScale * Random.Range(1.0f, 8.0f);
+            _timer2 = 4f;//reset the timer
+        }
+
+        _timer3 -= Time.deltaTime;
+        if ((_timer3 <= 0f) && (LevelManager.GetLevel() == 3))
+        {
+            //get a random stsrting x position for the meteor
+            _blackHolePos = new Vector3(Random.Range(-25, 25), 40, 0);
+            Instantiate(blackHole, _blackHolePos, Quaternion.identity);
+            _timer3 = 30f;//reset the timer
+        }
+
     }
    
     public void DelayedRestart(float delay)
@@ -79,5 +126,6 @@ public class Main : MonoBehaviour
         //reload scene to restart the game
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         ScoreManager.ResetScore();
+        LevelManager.ResetLevel();
     }
 }

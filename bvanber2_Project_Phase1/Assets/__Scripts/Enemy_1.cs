@@ -22,7 +22,21 @@ public class Enemy_1 : Enemy
         {
             gameObject.transform.Rotate(0, 0, 45);
         }
-        health = 2;        
+        health = 2;
+        PowerUpCounter = 3;
+        powerUpFreq = 3;
+    }
+
+    protected override int PowerUpCounter
+    {
+        get
+        {
+            return _dropUpShield;
+        }
+        set
+        {
+            _dropUpShield = value;
+        }
     }
 
     override public void Move()
@@ -44,7 +58,7 @@ public class Enemy_1 : Enemy
         }
     }
 
-    public override void OnTriggerEnter(Collider col)
+   /* public override void OnTriggerEnter(Collider col)
     {
         GameObject otherObject = col.gameObject;
         if (otherObject.tag == "ProjectileHero")//if the collision is from a hero bullet destroy both objects
@@ -57,19 +71,26 @@ public class Enemy_1 : Enemy
                 if (_dropUpShield > 0) _dropUpShield--;
                 else
                 {
-                    _dropUpShield = 3;
+                    _dropUpShield = powerUpFreq;
                     DropPowerUp();
                 }
                 Destroy(gameObject);
+                Main.enemies.Remove(gameObject);
             }
             Destroy(otherObject);
         }
-    }
+        if (otherObject.tag == "BlackHole")
+        {
+            print("enn 1 black hole");
+            Main.enemies.Remove(gameObject);
+            Destroy(gameObject);
+        }
+    }*/
 
     // Update is called once per frame
-    void Update()
+    /*void Update()
     {
         this.Move();
         IsOff();
-    }
+    }*/
 }

@@ -10,12 +10,33 @@ public class Enemy : MonoBehaviour      //Superclass from which the other 2 Enem
     public int points = 100;
     protected BoundsCheck bndCheck;
     public GameObject powerUp;
-    private static int _dropShrinker=6;
+    private static int _dropPowerUp=6;
+    protected int powerUpFreq = 6;
+    public delegate void WeaponFireDelegate();
+    public WeaponFireDelegate fireDelegate;
+
+    protected virtual int PowerUpCounter
+    {
+        get{
+            return _dropPowerUp;
+        }
+        set
+        {
+             _dropPowerUp= value;
+        }
+    }
+
+    void fire()
+    {
+
+    }
 
     public void Awake()
     {
         bndCheck = GetComponent<BoundsCheck>(); //Bounds Check 
         bndCheck.keepOnScreen = false;
+        fireDelegate +=fire;
+        
     }
 
     public Vector3 pos
@@ -32,11 +53,10 @@ public class Enemy : MonoBehaviour      //Superclass from which the other 2 Enem
 
     public virtual void Move()
     {
-        Vector3 _tempPos = pos;
-       
-        _tempPos.y -= speed * Time.deltaTime;       //Creating virtual function that can e overriden by the subclass of Enemy
-       
+        Vector3 _tempPos = pos;       
+        _tempPos.y -= speed * Time.deltaTime;      //Creating virtual function that can e overriden by the subclass of Enemy       
         pos = _tempPos;
+        
     }
 
     protected void IsOff()
@@ -55,22 +75,30 @@ public class Enemy : MonoBehaviour      //Superclass from which the other 2 Enem
         {
             if (otherObject.tag == "ProjectileHero")//if the collision is from a hero bullet destroy both objects
             {
+                fireDelegate(); //When enemy is hit by the hero, fire projectile 
                 health--;           
                 if (health <= 0)
                 {
                     ScoreManager.ScoreIncrease(points);    //Calling function to increase score 
-                    if (_dropShrinker > 0)
+                    if (PowerUpCounter > 0)
                     {
-                        _dropShrinker--;
+                        PowerUpCounter--;
                     }
                     else
                     {
-                        _dropShrinker = 6;
+                        PowerUpCounter = powerUpFreq;
                         DropPowerUp();
                     }
+                    Main.enemies.Remove(gameObject);
                     Destroy(gameObject);
                 }
                 Destroy(otherObject);
+            }
+            if (otherObject.tag == "BlackHole")
+            {
+                print("enn 0 black hole");
+                Main.enemies.Remove(gameObject);
+                Destroy(gameObject);
             }
         }
         

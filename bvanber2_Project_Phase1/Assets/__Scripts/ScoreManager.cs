@@ -17,6 +17,11 @@ public class ScoreManager : MonoBehaviour
     {
         _score = 0;
     }
+
+    public static int GetScore()
+    {
+        return _score;
+    }
    
     void Awake()
     {
