@@ -10,10 +10,11 @@ public class Enemy : MonoBehaviour      //Superclass from which the other 2 Enem
     public int points = 100;
     protected BoundsCheck bndCheck;
     public GameObject powerUp;
-    private static int _dropPowerUp;
+    private static int _dropPowerUp=6;
     protected int powerUpFreq = 6;
     public delegate void WeaponFireDelegate(); //delegate for enemies that shoot
     public WeaponFireDelegate fireDelegate;
+    protected bool _alredyCounted = false;//sometimes the powerup counter goes down by two if an enemy is hit by two bullets at the same time
 
     //property for the powerup counter for the base class
     public virtual int PowerUpCounter
@@ -38,7 +39,7 @@ public class Enemy : MonoBehaviour      //Superclass from which the other 2 Enem
         bndCheck = GetComponent<BoundsCheck>(); //Bounds Check 
         bndCheck.keepOnScreen = false;
         fireDelegate +=fire;//default shooting is no shooting
-        _dropPowerUp = powerUpFreq;//initialize the powerup frequency
+        powerUpFreq = 6;
     }
 
     public Vector3 pos
@@ -77,24 +78,25 @@ public class Enemy : MonoBehaviour      //Superclass from which the other 2 Enem
         {
             if (otherObject.tag == "ProjectileHero")//if the collision is from a hero bullet destroy both objects
             {
+                Destroy(otherObject);
                 fireDelegate(); //When enemy is hit by the hero, fire projectile 
                 health--;           
                 if (health <= 0)
                 {
-                    ScoreManager.ScoreIncrease(points);    //Calling function to increase score 
-                    if (PowerUpCounter > 0)
-                    {
-                        PowerUpCounter = PowerUpCounter - 1; ;
-                    }
-                    else
-                    {
-                        PowerUpCounter = powerUpFreq;
-                        DropPowerUp();
-                    }
                     Main.enemies.Remove(gameObject);
                     Destroy(gameObject);
+                    ScoreManager.ScoreIncrease(points);    //Calling function to increase score 
+                    if (PowerUpCounter > 0 && !_alredyCounted)//to prevent two bullets from triggering this
+                    {
+                        PowerUpCounter--;
+                        _alredyCounted = true;                        
+                    }
+                    else if(!_alredyCounted)
+                    {
+                        DropPowerUp();
+                        PowerUpCounter = powerUpFreq;                                             
+                    }                    
                 }
-                Destroy(otherObject);
             }
             if (otherObject.tag == "BlackHole")
             {

@@ -7,7 +7,6 @@ public class Enemy_2 :  Enemy
     public GameObject projectile;
     public WeaponType weaponType;
     public float projectileSpeed = 1f;
-    public int points2 = 300;
     public Weapon weapon;
     private static int _dropStar = 3;//drops a starPower Powerup every 3 kills of this enemy
 
@@ -15,7 +14,7 @@ public class Enemy_2 :  Enemy
     {
         health = 3;
         this.powerUpFreq = 3;
-        PowerUpCounter = this.powerUpFreq;
+        points = 300;
         //assign the delegate
         Weapon weapon = transform.Find("Weapon").gameObject.GetComponent<Weapon>();
         weaponType = WeaponType.enemy;//This changes the weapon type, use these

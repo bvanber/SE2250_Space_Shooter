@@ -8,7 +8,6 @@ public class Enemy_1 : Enemy
     
     private static Random _rand = new Random();        //Random numbers 1 or 2 to determine diagonal movement
     private int _randomNum = _rand.Next(0, 2);
-    public int points1 = 200;
     static private int _dropUpShield = 3; //drops a Shield powerup every 3 kills of this enemy
    
     // Start is called before the first frame update
@@ -24,7 +23,7 @@ public class Enemy_1 : Enemy
         }
         health = 2;
         this.powerUpFreq = 3;
-        this.PowerUpCounter = this.powerUpFreq;        
+        points = 200;
     }
 
     //property for the powerup for this subclass
