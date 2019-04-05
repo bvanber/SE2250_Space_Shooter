@@ -22,8 +22,13 @@ public class Enemy_1 : Enemy
             gameObject.transform.Rotate(0, 0, 45);
         }
         health = 2;
-        this.powerUpFreq = 3;
+        Enemy_1.powerUpFreq = 3;
         points = 200;
+    }
+
+    public static void ResetFreq()
+    {
+        _dropUpShield = 3;
     }
 
     //property for the powerup for this subclass

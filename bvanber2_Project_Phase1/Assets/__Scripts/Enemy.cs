@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour      //Superclass from which the other 2 Enem
     protected BoundsCheck bndCheck;
     public GameObject powerUp;
     private static int _dropPowerUp=6;
-    protected int powerUpFreq = 6;
+    protected static int powerUpFreq = 6;
     public delegate void WeaponFireDelegate(); //delegate for enemies that shoot
     public WeaponFireDelegate fireDelegate;
     protected bool _alredyCounted = false;//sometimes the powerup counter goes down by two if an enemy is hit by two bullets at the same time
@@ -28,6 +28,13 @@ public class Enemy : MonoBehaviour      //Superclass from which the other 2 Enem
         }
     }
 
+    public static void ResetAllFreq()
+    {
+        _dropPowerUp = 6;
+        Enemy_1.ResetFreq();        
+        Enemy_2.ResetFreq();        
+    }
+
     //empty fire function for enemies that dont shoot
     void fire()
     {
@@ -39,7 +46,7 @@ public class Enemy : MonoBehaviour      //Superclass from which the other 2 Enem
         bndCheck = GetComponent<BoundsCheck>(); //Bounds Check 
         bndCheck.keepOnScreen = false;
         fireDelegate +=fire;//default shooting is no shooting
-        powerUpFreq = 6;
+        Enemy.powerUpFreq = 6;
     }
 
     public Vector3 pos
@@ -76,7 +83,7 @@ public class Enemy : MonoBehaviour      //Superclass from which the other 2 Enem
         GameObject otherObject = col.gameObject;
         if (otherObject != null)//in case its already been destroyed
         {
-            if (otherObject.tag == "ProjectileHero")//if the collision is from a hero bullet destroy both objects
+            if (otherObject.tag == "ProjectileHero" && !_alredyCounted)//if the collision is from a hero bullet destroy both objects
             {
                 Destroy(otherObject);
                 fireDelegate(); //When enemy is hit by the hero, fire projectile 
@@ -86,15 +93,17 @@ public class Enemy : MonoBehaviour      //Superclass from which the other 2 Enem
                     Main.enemies.Remove(gameObject);
                     Destroy(gameObject);
                     ScoreManager.ScoreIncrease(points);    //Calling function to increase score 
-                    if (PowerUpCounter > 0 && !_alredyCounted)//to prevent two bullets from triggering this
+                    if (PowerUpCounter > 0)//to prevent two bullets from triggering this
                     {
                         PowerUpCounter--;
+                        print(PowerUpCounter);
                         _alredyCounted = true;                        
                     }
-                    else if(!_alredyCounted)
+                    else
                     {
                         DropPowerUp();
-                        PowerUpCounter = powerUpFreq;                                             
+                        PowerUpCounter = powerUpFreq;
+                        print(powerUpFreq);
                     }                    
                 }
             }

@@ -13,7 +13,7 @@ public class Enemy_2 :  Enemy
     void Start()
     {
         health = 3;
-        this.powerUpFreq = 3;
+        Enemy_2.powerUpFreq = 3;
         points = 300;
         //assign the delegate
         Weapon weapon = transform.Find("Weapon").gameObject.GetComponent<Weapon>();
@@ -21,6 +21,7 @@ public class Enemy_2 :  Enemy
         weapon.setType(weaponType);//two lines when the weapon type changes
         fireDelegate += weapon.Fire;
     }
+
     //property for the power up counter for this subclass
     public override int PowerUpCounter
     {
@@ -32,6 +33,11 @@ public class Enemy_2 :  Enemy
         {
             _dropStar = value;
         }
+    }
+
+    public static void ResetFreq()
+    {
+        _dropStar = 3;
     }
 
     override public void Move()

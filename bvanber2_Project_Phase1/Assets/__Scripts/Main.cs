@@ -111,5 +111,6 @@ public class Main : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         ScoreManager.ResetScore();
         LevelManager.ResetLevel();
+        Enemy.ResetAllFreq();
     }
 }

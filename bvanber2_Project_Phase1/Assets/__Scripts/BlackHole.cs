@@ -39,6 +39,7 @@ public class BlackHole : MonoBehaviour
     public void Start()
     {
         if (Hero.ship!=null)_heroGO = Hero.ship.gameObject;
+        bndCheck = GetComponent<BoundsCheck>();
         
     }
     
@@ -50,6 +51,7 @@ public class BlackHole : MonoBehaviour
 
         if (otherObject != null)
         {
+            //these gameobjects take care of their own deletion
             if (go.tag != "Hero" && go.tag !="PowerUp" && go.tag!="Meteor" && go.tag!="Enemy")
             {
                 Destroy(go);
@@ -70,6 +72,11 @@ public class BlackHole : MonoBehaviour
     {
         if (bndCheck != null && bndCheck.offDown)
         {
+            //destroy the remaining particles
+            foreach(GameObject p in _particles)
+            {
+                Destroy(p);
+            }
             Destroy(gameObject);
         }
     }
