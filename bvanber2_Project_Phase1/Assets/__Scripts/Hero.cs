@@ -36,7 +36,7 @@ public class Hero : MonoBehaviour
         }
         //assign the delegate
         Weapon weapon = transform.Find("Weapon").gameObject.GetComponent <Weapon> ();
-        weaponType=WeaponType.blaster;//This changes the weapon type, use these
+        weaponType=WeaponType.simple;//This changes the weapon type, use these
         weapon.setType(weaponType);//two lines when the weapon type changes
         fireDelegate += weapon.Fire;
         gameObject.GetComponent<FlashingColourManager>().status = Status.off;
@@ -61,21 +61,21 @@ public class Hero : MonoBehaviour
             fireDelegate();
         }
 
-        //switch between weapons when E is pressed
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            switchWeapon();
-        }
-    }
-    //function to switch beween the simple weapon and blaster weapon
-    void switchWeapon()
-    {
+        //switch between weapons when key is pressed
         Weapon weapon = transform.Find("Weapon").gameObject.GetComponent<Weapon>();
-        if (weaponType == WeaponType.blaster) weaponType = WeaponType.simple;
-        else weaponType = WeaponType.blaster;
-        weapon.setType(weaponType);
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+            weapon.setType(WeaponType.simple);
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+            weapon.setType(WeaponType.blaster);
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+            weapon.setType(WeaponType.surround);
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+            weapon.setType(WeaponType.swivel);
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+            weapon.setType(WeaponType.annihilate);
     }
-    
+   
+ 
     private void OnTriggerEnter(Collider other)
     {
 

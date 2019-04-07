@@ -12,6 +12,7 @@ public class ScoreManager : MonoBehaviour
     public static void ScoreIncrease(int points)        //Defining static function that increases the score 
     {
         _score += points;
+        WeaponCounter.scoreCount += points;
     }
     public static void ResetScore()
     {

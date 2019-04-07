@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -31,5 +32,15 @@ public class Projectile : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    internal void fire(object x, object y, object angle, object speed, object gx, object gy)
+    {
+        throw new NotImplementedException();
+    }
+
+    internal void AddForce(object p)
+    {
+        throw new NotImplementedException();
     }
 }

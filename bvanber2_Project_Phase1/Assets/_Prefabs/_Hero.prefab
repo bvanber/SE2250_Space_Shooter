@@ -536,11 +536,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 452045868491981512}
     m_Modifications:
-    - target: {fileID: 3843655523671300146, guid: ff93593f765fe994aa20f5d8a08ec508,
-        type: 3}
-      propertyPath: m_Name
-      value: Weapon
-      objectReference: {fileID: 0}
     - target: {fileID: 7727264400693238997, guid: ff93593f765fe994aa20f5d8a08ec508,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -595,6 +590,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3843655523671300146, guid: ff93593f765fe994aa20f5d8a08ec508,
+        type: 3}
+      propertyPath: m_Name
+      value: Weapon
+      objectReference: {fileID: 0}
+    - target: {fileID: 1606740918332634217, guid: ff93593f765fe994aa20f5d8a08ec508,
+        type: 3}
+      propertyPath: _type
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4498142246955753126, guid: ff93593f765fe994aa20f5d8a08ec508,
         type: 3}
