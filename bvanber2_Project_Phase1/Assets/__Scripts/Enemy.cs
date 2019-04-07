@@ -96,14 +96,12 @@ public class Enemy : MonoBehaviour      //Superclass from which the other 2 Enem
                     if (PowerUpCounter > 0)//to prevent two bullets from triggering this
                     {
                         PowerUpCounter--;
-                        print(PowerUpCounter);
                         _alredyCounted = true;                        
                     }
                     else
                     {
                         DropPowerUp();
                         PowerUpCounter = powerUpFreq;
-                        print(powerUpFreq);
                     }                    
                 }
             }

@@ -5,23 +5,43 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     public AudioClip shotSfx;
+    public AudioClip levelUpSfx;
+    public AudioClip powerUpSfx;
+    public AudioClip gameStartSfx;
     public AudioClip crashSfx;          //Adding in sound variables
-    public AudioSource sourceShot;
-    public AudioSource sourceCrash;
+    public AudioSource source;
+
     public static SoundManager soundManager;
     void Awake()
     {
-        sourceCrash = GetComponent<AudioSource>();
-        sourceShot = GetComponent<AudioSource>(); 
+        source = GetComponent<AudioSource>();
+
         soundManager = GetComponent<SoundManager>();
     }
-    public void shotSound()
+    public void LevelUpSound()
     {
-        sourceShot.PlayOneShot(shotSfx,1);              //creating functions to play sounds
+
+        source.PlayOneShot(levelUpSfx, 0.2f);
+
     }
-    public void crashSound()
+    public void GameStartSound()
     {
-        sourceCrash.PlayOneShot(crashSfx,1);
+
+        source.PlayOneShot(gameStartSfx, 0.2f);
+
     }
+    public void ShotSound()
+    {
+        source.PlayOneShot(shotSfx, 1);              //creating functions to play sounds
+    }
+    public void CrashSound()
+    {
+        source.PlayOneShot(crashSfx, 1);
+    }
+    public void PowerUpSound()
+    {
+        source.PlayOneShot(powerUpSfx, 1);
+    }
+
 
 }

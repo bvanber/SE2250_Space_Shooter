@@ -30,6 +30,7 @@ public class PowerUpShrinkMe : MonoBehaviour
             gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
             _origScale = _ship.transform.localScale;
             _ship.transform.localScale = new Vector3(_shrinkTime, _shrinkTime, _shrinkTime);
+            SoundManager.soundManager.PowerUpSound();
         }
     }
 

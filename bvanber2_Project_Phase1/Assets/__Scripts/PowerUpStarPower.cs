@@ -30,6 +30,7 @@ public class PowerUpStarPower : MonoBehaviour
             shipFlashy = _ship.GetComponent<FlashingColourManager>();
             shipFlashy.status=Status.on;
             _hasCollided = true;
+            SoundManager.soundManager.PowerUpSound();
         }
     }
 

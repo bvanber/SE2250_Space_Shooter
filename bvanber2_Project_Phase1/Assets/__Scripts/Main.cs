@@ -9,7 +9,6 @@ public class Main : MonoBehaviour
 
     public GameObject[] prefabEnemies = new GameObject[3];
     public static List<GameObject> enemies = new List<GameObject>();
-    private List<GameObject> _toDelete = new List<GameObject>();
     public GameObject meteor;
     public GameObject blackHole;
     private float _timer;
@@ -56,6 +55,7 @@ public class Main : MonoBehaviour
     {
         _timer = 1f;
         _timer2 = 1f;
+        SoundManager.soundManager.GameStartSound();
     }
 
     // Update is called once per frame
@@ -103,6 +103,7 @@ public class Main : MonoBehaviour
     {
         //invoked the Restart() method in delay seconds
         Invoke("Restart", delay);
+        
     }
 
     public void Restart()

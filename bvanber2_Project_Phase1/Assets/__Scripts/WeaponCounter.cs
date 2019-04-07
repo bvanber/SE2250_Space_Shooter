@@ -5,7 +5,11 @@ using UnityEngine.UI;
 
 public class WeaponCounter : MonoBehaviour
 {
-    public Text weaponCountText;                  //Defining texts to manipulate and display how many weapons are available of each type
+    public Text SimpleWeaponCountText;                  //Defining texts to manipulate and display how many weapons are available of each type
+    public Text BlasterWeaponCountText;
+    public Text SurroundWeaponCountText;
+    public Text SwivelWeaponCountText;
+    public Text AnnihilateWeaponCountText;
     public static int simpleCount = 100;          //Player starts with 100 simple bullets, 50 blaster bullets, 20 surround bullets, 10 swivel bullets, and 5 annihilate bullets
     public static int blasterCount = 50;
     public static int surroundCount = 20;
@@ -56,10 +60,25 @@ public class WeaponCounter : MonoBehaviour
         swivelCount = 10;
         annihilateCount = 5;
     }
+
+    void Start()
+    {
+        //set the colours of the text fields to the colours of respective the weapon type colours
+        SimpleWeaponCountText.color = new Color(47/255f, 241/255f, 206/255f);
+        BlasterWeaponCountText.color = new Color(250/255f, 32/255f, 213/255f);
+        SurroundWeaponCountText.color = new Color(248/255f, 8/255f, 8/255f);
+        SwivelWeaponCountText.color = new Color(253/255f, 175/255f, 20/255f);
+        AnnihilateWeaponCountText.color = new Color(241/255f, 241/255f, 208/255f);
+    }
+
     void Update()
     {
         UpdateWeaponCount();
         //outputs number of weapons available to the game pane
-        weaponCountText.text = "x " + simpleCount.ToString() + "\nx " + blasterCount.ToString() + "\nx " + surroundCount.ToString() + "\nx " + swivelCount.ToString() + "\nx " + annihilateCount.ToString();
+        SimpleWeaponCountText.text = "x " + simpleCount.ToString();
+        BlasterWeaponCountText.text = "x " + blasterCount.ToString();
+        SurroundWeaponCountText.text = "x " + surroundCount.ToString();
+        SwivelWeaponCountText.text = "x " + swivelCount.ToString();
+        AnnihilateWeaponCountText.text= "x " + annihilateCount.ToString();
     }
 }

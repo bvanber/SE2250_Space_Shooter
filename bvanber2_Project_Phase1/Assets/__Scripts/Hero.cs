@@ -114,7 +114,7 @@ public class Hero : MonoBehaviour
                 return; 
             }
         }
-        SoundManager.soundManager.crashSound(); //When hero is hit call crashSound function
+        SoundManager.soundManager.CrashSound(); //When hero is hit call crashSound function
     }
     //property for the shield
     public float shieldLevel

@@ -97,9 +97,8 @@ public class Weapon : MonoBehaviour
 
             case WeaponType.swivel: //aims to nearest enemy, shoots 3 bullets in that direction
                 if (WeaponCounter.swivelCount == 0) {;}
-                else
+                else if(_swivelBullet==null)
                 {
-                    GameObject kill = _nearestEnemy;
                     p = makeProjectile();
                     _swivelBullet = p.gameObject;
                     WeaponCounter.DecrementSwivel();
@@ -120,7 +119,7 @@ public class Weapon : MonoBehaviour
                 }
                 break;
         }
-        SoundManager.soundManager.shotSound(); //Whenever weapon fires call the shotSound function
+        SoundManager.soundManager.ShotSound(); //Whenever weapon fires call the shotSound function
     }
 
     public void Update() //called every frame 

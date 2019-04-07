@@ -19,6 +19,7 @@ public class PowerUpShield : MonoBehaviour
         {
             col.gameObject.GetComponent<Hero>().shieldLevel += 1;
             Destroy(gameObject);
+            SoundManager.soundManager.PowerUpSound();
         }
     }
 

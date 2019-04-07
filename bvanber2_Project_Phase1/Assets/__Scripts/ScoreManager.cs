@@ -26,6 +26,7 @@ public class ScoreManager : MonoBehaviour
    
     void Awake()
     {
+
         _high_score = PlayerPrefs.GetInt("Shump_high_score"); //Getting high score if there is a pre-existing high score in PlayerPrefs
     }                                                         
     void Update()
