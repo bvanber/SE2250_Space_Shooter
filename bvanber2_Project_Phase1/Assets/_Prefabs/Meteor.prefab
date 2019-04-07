@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1168510590553559253}
   - component: {fileID: 6367867133117570606}
   - component: {fileID: 7338144142281690080}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Crater (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 3943826924665368391}
   - component: {fileID: 1845275987671515185}
   - component: {fileID: 81674982285368130}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Crater (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -194,7 +194,7 @@ GameObject:
   - component: {fileID: 1594088491985383296}
   - component: {fileID: 1169396002034588890}
   - component: {fileID: 4270325234794543466}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Crater (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -285,7 +285,7 @@ GameObject:
   - component: {fileID: 8100281099463356439}
   - component: {fileID: 2821972920391062651}
   - component: {fileID: 5957681191221096304}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Crater (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -376,7 +376,7 @@ GameObject:
   - component: {fileID: 4678947136295314026}
   - component: {fileID: 5902608983869437597}
   - component: {fileID: 4928511065658542503}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Crater
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -470,7 +470,7 @@ GameObject:
   - component: {fileID: 7088255337330044411}
   - component: {fileID: 7088255337330044410}
   - component: {fileID: 7088255337330044412}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: Meteor
   m_TagString: Meteor
   m_Icon: {fileID: 0}

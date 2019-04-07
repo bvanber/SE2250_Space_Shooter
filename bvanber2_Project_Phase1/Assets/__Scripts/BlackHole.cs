@@ -68,7 +68,7 @@ public class BlackHole : MonoBehaviour
     }
 
     //IsOff method to check if the black hole is off the screen, if it is, destroy it
-    protected void IsOff()
+    private void IsOff()
     {
         if (bndCheck != null && bndCheck.offDown)
         {
@@ -77,6 +77,7 @@ public class BlackHole : MonoBehaviour
             {
                 Destroy(p);
             }
+            _particles.Clear();
             Destroy(gameObject);
         }
     }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Meteor : MonoBehaviour
 {
     //define class properties 
-    protected BoundsCheck bndCheck;
+    private BoundsCheck bndCheck;
     private float _speed;
     private float _horizontalVelocity;
 
@@ -39,7 +39,7 @@ public class Meteor : MonoBehaviour
         _speed = Random.Range(2.0f, 8.0f);
     }
     //IsOff method checks to see if this object is off the screen, if it is, it is destroyed and removed from the enemy list
-    protected void IsOff()
+    void IsOff()
     {
         if (bndCheck != null && !bndCheck.isOnScreen)
         {
@@ -48,7 +48,7 @@ public class Meteor : MonoBehaviour
         }
     }
     //OnTriggerEnter method for when a collision is detected
-    public  void OnTriggerEnter(Collider col) 
+    public void OnTriggerEnter(Collider col) 
     {      
         //get the root of the object that collieded with this object (in case it is a compound object)
         GameObject otherObject = col.gameObject;

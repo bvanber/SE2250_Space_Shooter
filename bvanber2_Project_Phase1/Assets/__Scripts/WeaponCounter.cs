@@ -11,10 +11,10 @@ public class WeaponCounter : MonoBehaviour
     public Text SwivelWeaponCountText;
     public Text AnnihilateWeaponCountText;
     public static int simpleCount = 100;          //Player starts with 100 simple bullets, 50 blaster bullets, 20 surround bullets, 10 swivel bullets, and 5 annihilate bullets
-    public static int blasterCount = 50;
-    public static int surroundCount = 20;
-    public static int swivelCount = 10;
-    public static int annihilateCount = 5;
+    public static int blasterCount = 30;
+    public static int surroundCount = 10;
+    public static int swivelCount = 5;
+    public static int annihilateCount = 3;
     public static int scoreCount = 0;
 
     //externally called to decrement number of each type of shot available
@@ -55,10 +55,10 @@ public class WeaponCounter : MonoBehaviour
     public static void ResetCount() //resets to original weapon count values
     {
         simpleCount = 100;
-        blasterCount = 50;
-        surroundCount = 20;
-        swivelCount = 10;
-        annihilateCount = 5;
+        blasterCount = 30;
+        surroundCount = 10;
+        swivelCount = 5;
+        annihilateCount = 3;
     }
 
     void Start()
@@ -66,7 +66,7 @@ public class WeaponCounter : MonoBehaviour
         //set the colours of the text fields to the colours of respective the weapon type colours
         SimpleWeaponCountText.color = new Color(47/255f, 241/255f, 206/255f);
         BlasterWeaponCountText.color = new Color(250/255f, 32/255f, 213/255f);
-        SurroundWeaponCountText.color = new Color(248/255f, 8/255f, 8/255f);
+        SurroundWeaponCountText.color = new Color(174/255f, 14/255f, 236/255f);
         SwivelWeaponCountText.color = new Color(253/255f, 175/255f, 20/255f);
         AnnihilateWeaponCountText.color = new Color(241/255f, 241/255f, 208/255f);
     }
