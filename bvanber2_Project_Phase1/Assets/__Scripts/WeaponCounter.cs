@@ -47,18 +47,18 @@ public class WeaponCounter : MonoBehaviour
     {
         if (scoreCount >= 2000) //resets weapon count everytime the player gets 2000 points
         {
-            ResetCount();
-            scoreCount = 0;
+            ResetCount(scoreCount-2000);
         }
     }
 
-    public static void ResetCount() //resets to original weapon count values
+    public static void ResetCount(int a=0) //resets to original weapon count values
     {
         simpleCount = 100;
         blasterCount = 30;
         surroundCount = 10;
         swivelCount = 5;
         annihilateCount = 3;
+        scoreCount = a;
     }
 
     void Start()

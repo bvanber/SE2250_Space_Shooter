@@ -97,7 +97,7 @@ public class Weapon : MonoBehaviour
 
             case WeaponType.swivel: //aims to nearest enemy, shoots 3 bullets in that direction
                 if (WeaponCounter.swivelCount == 0) {;}
-                else if(_swivelBullet==null)
+                else if(_swivelBullet==null)//only one swivel bullet exists at a time
                 {
                     p = makeProjectile();
                     _swivelBullet = p.gameObject;

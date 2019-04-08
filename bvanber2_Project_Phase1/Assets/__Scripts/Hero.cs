@@ -21,7 +21,7 @@ public class Hero : MonoBehaviour
     [Header("Set Dynamically")]
     [SerializeField]
     private float _shieldLevel = 1;
-    private GameObject lastTriggerGo = null;
+    private GameObject _lastTriggerGo = null;
     public bool isInvincible = false;
 
     void Awake() //checks if ship is null to avoid null reference exception
@@ -84,11 +84,11 @@ public class Hero : MonoBehaviour
   
         if (go != null)//in case its already been destroyed
         {
-            if (go == lastTriggerGo)
+            if (go == _lastTriggerGo)
             {
                 return;
             }
-            lastTriggerGo = go;
+            _lastTriggerGo = go;
             //check to see what triggered the collision
             if (go.tag == "Enemy"&& !isInvincible)
             {

@@ -19,8 +19,6 @@ public class FlashingColourManager : MonoBehaviour
     private int _end;
     private float _switch = 1f;
     public Status status=Status.off;//default status
-    //private Transform[] _allChildren=new Transform[5];
-    public int _size;
 
     // Start is called before the first frame update
     void Start()

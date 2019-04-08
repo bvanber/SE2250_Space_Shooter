@@ -5,7 +5,7 @@ using UnityEngine;
 public class PowerUpStarPower : MonoBehaviour
 {
     private BoundsCheck _bndsCheck;
-    public float _timeLength=80;
+    private float _timeLength=80;
     private GameObject _ship;
     public FlashingColourManager shipFlashy;
     private bool _hasCollided;

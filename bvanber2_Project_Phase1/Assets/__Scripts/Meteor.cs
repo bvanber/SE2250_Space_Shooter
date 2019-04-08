@@ -5,7 +5,7 @@ using UnityEngine;
 public class Meteor : MonoBehaviour
 {
     //define class properties 
-    private BoundsCheck bndCheck;
+    private BoundsCheck _bndCheck;
     private float _speed;
     private float _horizontalVelocity;
 
@@ -33,15 +33,15 @@ public class Meteor : MonoBehaviour
     //Awake method sets bounds check as well as both private properties used in Move()
     public void Awake()
     {
-        bndCheck = GetComponent<BoundsCheck>();
-        bndCheck.keepOnScreen = false;
+        _bndCheck = GetComponent<BoundsCheck>();
+        _bndCheck.keepOnScreen = false;
         _horizontalVelocity = Random.Range(-3.5f, 3.5f);
         _speed = Random.Range(2.0f, 8.0f);
     }
     //IsOff method checks to see if this object is off the screen, if it is, it is destroyed and removed from the enemy list
     void IsOff()
     {
-        if (bndCheck != null && !bndCheck.isOnScreen)
+        if (_bndCheck != null && !_bndCheck.isOnScreen)
         {
             Main.enemies.Remove(gameObject);
             Destroy(gameObject);

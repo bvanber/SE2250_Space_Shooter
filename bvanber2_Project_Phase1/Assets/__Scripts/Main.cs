@@ -11,9 +11,9 @@ public class Main : MonoBehaviour
     public static List<GameObject> enemies = new List<GameObject>();
     public GameObject meteor;
     public GameObject blackHole;
-    private float _timer;
-    private float _timer2;
-    private float _timer3;
+    private float _timer;//for enemy
+    private float _timer2;//for meteor
+    private float _timer3;//for blackhole
     private Vector3 _startPos;
     private Vector3 _meteorPos;
     private Vector3 _blackHolePos;
